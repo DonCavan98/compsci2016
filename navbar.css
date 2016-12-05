@@ -73,3 +73,9 @@ li.dropdown {
     width:960px;
     margin:0px auto;
 }
+
+.cherrypie{
+    top:100px;
+    width:-300px;
+    position: absolute;
+}
