@@ -47,12 +47,12 @@ th {
 <table style="width:100%">
  <tr>
  <th>Vindinium</th>
- <th>Explaination</th>
+ <th>Explatnation</th>
  
  </tr>
   <tr>
     <td>
-    
+    <img src="https://s3.amazonaws.com/poly-screenshots.angel.co/Project/a0/120663/73d89cbf74dde0cacf22233ec6dc6a79-original.png"></img>
     </td>
     <td>Vindinium is a turn-based game where users design bots to fight in an arena. The bots used in Vindinium in this case are made using javascript to make desicions and excecute commands, resembling Artificial intelligence.</td>
    
@@ -60,47 +60,222 @@ th {
 </table>
 <table style="width:100%">
  <tr>
- <th>Deciding What</th>
- <th>Explaination</th>
+ <th>Deciding What and How</th>
+ <th>Explanation</th>
  
  </tr>
   <tr>
     <td>
         <pre>
             <code>
+            // Set myDir to what you want and it will set bot.goDir to that direction at the end.  Unless it is "none"
+        var myDir;
+
+        // looks at the x,y coordinates which my bot is 
+        var myPos = [bot.yourBot.pos.x, bot.yourBot.pos.y];
+
+        //creates an array of enemyBots to store object of enemyBot
+        var enemybot = [];
+        if (bot.yourBot.id != 1) enemybot.push(bot.bot1);
+        if (bot.yourBot.id != 2) enemybot.push(bot.bot2);
+        if (bot.yourBot.id != 3) enemybot.push(bot.bot3);
+        if (bot.yourBot.id != 4) enemybot.push(bot.bot4);
+
+        var enemyMines = [];
+        enemyMines = enemyMines.concat(enemybot[0].mines);
+        enemyMines = enemyMines.concat(enemybot[1].mines);
+        enemyMines = enemyMines.concat(enemybot[2].mines);
+
+        /*                                      *
+         * This Code Decides WHAT to do         *
+         *                                      */
+        var task = "none";
+        task = "freeMines";
+
+        
+
+
+
+        //this ensures that when my life total is under 21, my bot will go to a tavern and get life
+        if (bot.yourBot.life < 21) {
+            task = "tavernTime";
+        }
+
+        if (bot.yourBot.life > 21) {
+            task = "killBot"
+        }
+
+
+
+        /*                                      *
+         * This Code Determines HOW to do it    *
+         *                                      */
+
+
+
+
+
+        //finds closest mine that is nuetral
+        if (task === "freeMines") {
+            var closestMine = bot.freeMines[0];
+            for (var i = 0; i < bot.freeMines.length; i++) {
+                if (bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+                    closestMine = bot.freeMines[i];
+
+                }
+            }
+            console.log("hay! collecting a ine");
+            myDir = bot.findPath(myPos, closestMine);
+        }
+        //getting mines is high priority and this finds closer mines of enemies
+        if (task === "enemyMine") {
+            var enemyMine = enemyMines[0];
+            for (var i = 0; i < enemyMines.length; i++) {
+                if (bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, enemyMines[i])) {
+                    enemyMine = enemyMines[i];
+
+                }
+            }
+            console.log("hay! collecting a ine");
+            myDir = bot.findPath(myPos, closestMine);
+        }
+        //health is second priority and when needed, this finds close taverns and visits them
+        if (task === "tavernTime") {
+            var closestTavern = bot.taverns[0];
+            for (var i = 0; i < bot.taverns.length; i++) {
+                if (bot.findDistance(myPos, closestTavern) > bot.findDistance(myPos, bot.taverns[i])){
+                closestTavern = bot.taverns[i];
+                }
+            }
+        }
+        console.log("hay! collecting a fine");
+        myDir = bot.findPath(myPos, closestTavern);
+
+        //when conditions provide for attacking another bot, this task wil excecute
+        if (task === "killBot") {
+            var closestBot = enemybot[0];
+            for (var i = 0; i < bot.enemyBots.length; i++) {
+                if (bot.findDistance(myPos, closestBot.posArray) > bot.findDistance(myPos, bot.enemybot[i])){
+                    closestBot = bot.enemyBots[i];
+                }
+            }
+        console.log("attacked enemy");
+        myDir = bot.findPath(myPos, closestBot.posArray)    
+        }
+        
+
+
+
+        //if no tasks apply, the bot will move randomly
+        if (task === "none") {
+            console.log("Going Random!");
+            var rand = Math.floor(Math.random() * 4);
+            var dirs = ["north", "south", "east", "west"];
+            myDir = dirs[rand];
+        }
+
+
+
+
+        /*                                                                          *
+         * This Code Sets your direction based on myDir. Change if you want.        */
+
+        bot.goDir = myDir;
+
+        ///////////* DON'T REMOVE ANTYTHING BELOW THIS LINE *//////////////
+        resolve();
+    });
+};
+bot.runGame();
 
             </code>
         </pre>
     </td>
-    <td></td>
-   
-  </tr>
-</table>
-<table style="width:100%">
- <tr>
- <th>Deciding How</th>
- <th>Explaination</th>
- 
- </tr>
-  <tr>
-    <td>
-    
+    <td>Mines
+        <pre>
+            <code>
+            //finds closest mine that is nuetral
+        if (task === "freeMines") {
+            var closestMine = bot.freeMines[0];
+            for (var i = 0; i < bot.freeMines.length; i++) {
+                if (bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+                    closestMine = bot.freeMines[i];
+
+                }
+            }
+            console.log("hay! collecting a ine");
+            myDir = bot.findPath(myPos, closestMine);
+        }
+        //getting mines is high priority and this finds closer mines of enemies
+        if (task === "enemyMine") {
+            var enemyMine = enemyMines[0];
+            for (var i = 0; i < enemyMines.length; i++) {
+                if (bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, enemyMines[i])) {
+                    enemyMine = enemyMines[i];
+
+                }
+            }
+            console.log("hay! collecting a ine");
+            myDir = bot.findPath(myPos, closestMine);
+        }
+            </code>
+        </pre>
+    In order to take neutral mines, I created a var and a task as well as an if statement to determine if my health was great enough to take a mine. I also created an array of enemy mines to attack and takeover. Taking over mines is first because the amount of gold determines the winner and the more mines taken, the more gold is accrued.
     </td>
-    <td>.</td>
+    <td>Taverns
+        <pre>
+            <code>
+            if (bot.yourBot.life < 21) {
+            task = "tavernTime";
+        }
+            //health is second priority and when needed, this finds close taverns and visits them
+        if (task === "tavernTime") {
+            var closestTavern = bot.taverns[0];
+            for (var i = 0; i < bot.taverns.length; i++) {
+                if (bot.findDistance(myPos, closestTavern) > bot.findDistance(myPos, bot.taverns[i])){
+                closestTavern = bot.taverns[i];
+                }
+            }
+        }
+        console.log("hay! collecting a fine");
+        myDir = bot.findPath(myPos, closestTavern);
+            </code>
+        </pre>
+    An if statement was used to see when it is appropriate to get some health, as you can see, that number is 21. Once my bots health has decreased to 21, the bot will find coordinates of the nearest tavern, spend 2 gold and acquire 50 health 
+    </td>
+    <td>Attack
+        <pre>
+            <code>
+            //when conditions provide for attacking another bot, this task wil excecute
+        if (task === "killBot") {
+            var closestBot = enemybot[0];
+            for (var i = 0; i < bot.enemyBots.length; i++) {
+                if (bot.findDistance(myPos, closestBot.posArray) > bot.findDistance(myPos, bot.enemybot[i])){
+                    closestBot = bot.enemyBots[i];
+                }
+            }
+        console.log("attacked enemy");
+        myDir = bot.findPath(myPos, closestBot.posArray)    
+        }
+            </code>
+        </pre>
+    This if else staement along with an array of enemy bots determine when and how to attack the different enemies. Similar to taverns, when my health is high eneough, it will find these enemies and terminate them(hopefully). in an attempt to maximise the amount of time to attack other bots, I made the health needed to attack pretty low so I could attack for the maximum amount of time
+    </td>
    
   </tr>
 </table>
+
 <table style="width:100%">
  <tr>
  <th>What I Learned</th>
- <th>Explaination</th>
+ <th>Explanation</th>
  
  </tr>
   <tr>
     <td>
     
     </td>
-    <td></td>
+    <td>The bot that I designed did what I had intended it to do. It was fairly simple with three different objectives: get mines, get health, and attack enemies. My strategy was to last as long as possible without losing too much health in order to maximize opportunities to acquire mines, and attack enemies until health is needed.This project has enhanced my opinion of artificial intelligence and its ability to assist humans in computing as well as daily life. By having an active role in artificial intelligence through this project, I have found that AI can be quite beneficial.</td>
    
   </tr>
 </table>    
