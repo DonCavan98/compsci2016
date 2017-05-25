@@ -9,7 +9,7 @@ calculate.addEventListener("click", function(){
   var num1 = num1input.value;
   var num2 = num2input.value;
   
-  
+
 /* if else statements which will perfom the calculations after the user selects which operation they desire
 and the differnt variables for answer correspond to that particular operation*/
  if(operator.value === "+"){

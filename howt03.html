@@ -1,0 +1,129 @@
+<body>
+    <ul id="navbar">
+        <li><a href="index.html"> About Me</a></li>
+        <li><a href="hardware.html"> Hardware</a></li>
+        <li><a href="calc.html">Calculator</a></li>
+        <li><a href="todo.html"> Todo List</a></li>
+        <li><a href="vind.html"> Vindinium</a></li>
+        <li><a href="bigproject.html.html"> Big Project</a></li>
+    </ul>
+<link rel="stylesheet" href="howto3.css">
+    <style>
+ body {margin: 0; padding: 0;}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+    
+body {
+    background-color:black
+}
+    </style>
+
+
+    </style>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+th {
+    text-align: left;
+}
+</style>
+</head>
+<body>
+<h1>This is my HowTo page for the Second Project Concerned With My Calculator</h1>
+<p>This is where I will go in-depth on different techniques and code which employed during the process of creating the calculator the user will see on this website. I will provide examples of the code I used.</p>
+<table style="width:100%">
+ <tr>
+ <th>The HTML of My Calculator</th>
+ <th>Explaination</th>
+ 
+ </tr>
+  <tr>
+    <td>
+        <pre>
+            <code>
+                &lt;body&gt;
+    &lt;br&gt;
+  &lt;input id=&quot;num1&quot;/&gt; 
+&lt;select id=&quot;operator&quot;&gt;
+  &lt;option value=&quot;+&quot;&gt;+&lt;/option&gt;
+  &lt;option value=&quot;-&quot;&gt;-&lt;/option&gt;
+  &lt;option value=&quot;*&quot;&gt;*&lt;/option&gt;
+  &lt;option value=&quot;/&quot;&gt;/&lt;/option&gt;
+  &lt;option value=&quot;^&quot;&gt;^&lt;/option&gt;
+  &lt;option value=&quot;sqrt&quot;&gt;&radic; &lt;/option&gt;
+&lt;/select&gt;
+
+  &lt;input id =&quot;num2&quot;/&gt; 
+  
+  &lt;button id=&quot;calculate&quot;&gt;calculate&lt;/button&gt;
+  
+  &lt;div id =&quot;display&quot;&gt;&lt;/div&gt;
+
+&lt;script src=&quot;calculator.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+            </code>
+        </pre>
+    </td>
+    <td>The HTML for the Calculator consisted of a selection menu with a total of 6 operators for the user to choose from. The selection menu was used in conjunction with two inputs which the user would choose which numbers to calculate with respect to the particular operator. These options were in one line with the selection menu in between the two inputs to simplify the users' experience. Underneath was a div which would display the answer of each particular operation.</td>
+   
+  </tr>
+</table>
+<table style="width:100%">
+ <tr>
+ <th>How to make a Homepage</th>
+ <th>Explaination</th>
+ 
+ </tr>
+  <tr>
+    <td>
+        <pre>
+            <code>
+var num1input = document.getElementById("num1");
+var operator = document.getElementById("operator");
+var num2input = document.getElementById("num2");
+var calculate = document.getElementById("calculate");
+var display = document.getElementById("display");
+
+calculate.addEventListener("click", function(){
+  var num1 = num1input.value;
+  var num2 = num2input.value;
+ if(operator.value === "+"){
+    var answera = +num1 + +num2;
+    display.innerHTML = answera;
+  }
+  else if(operator.value === "-"){
+    var answerb = num1 - num2; 
+    display.innerHTML = answerb;
+  }
+   else if(operator.value === "*"){
+    var answerc = num1 * num2; 
+    display.innerHTML = answerc;
+  }
+   else if(operator.value === "/"){
+    var answerd = num1 / num2; 
+    display.innerHTML = answerd;
+  }
+  else if(operator.value === "^"){
+    var answere = Math.pow(num1,num2);
+    display.innerHTML = answere;
+  }
+  else if(operator.value === "sqrt"){
+  var answerf = Math.sqrt(num2)
+  display.innerHTML = answerf;
+  }
+});
+            </code>
+        </pre>
+    </td>
+    <td>The javascript performs the calculations while the HTML handles the user interface of my calculator. The first part of my javascript defines the variables based of the id's of my elements from my HTML. I then added an event listener so that when the user "clicks" the calculate button, the function would perform the slew of if and if else calculations which pertain to the particular operator employed by the user.</td>
+   
+  </tr>
+</table>
+    </body>
+    </html>
