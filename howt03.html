@@ -34,11 +34,13 @@ th {
 </style>
 </head>
 <body>
-<h1>This is my HowTo page for the Second Project Concerned With My Calculator</h1>
-<p>This is where I will go in-depth on different techniques and code which employed during the process of creating the calculator the user will see on this website. I will provide examples of the code I used.</p>
+<h1>This is my HowTo page for the Second Project Concerned With My Big Project for Computer Science 2017-2017</h1>
+<p>This is where I will go in-depth on different techniques and code which employed during the process of creating the quiz the user will see on this website. I will provide examples of the code I used.</p>
+
+
 <table style="width:100%">
  <tr>
- <th>The HTML of My Calculator</th>
+ <th>How to make a the Quiz</th>
  <th>Explaination</th>
  
  </tr>
@@ -46,82 +48,133 @@ th {
     <td>
         <pre>
             <code>
-                &lt;body&gt;
-    &lt;br&gt;
-  &lt;input id=&quot;num1&quot;/&gt; 
-&lt;select id=&quot;operator&quot;&gt;
-  &lt;option value=&quot;+&quot;&gt;+&lt;/option&gt;
-  &lt;option value=&quot;-&quot;&gt;-&lt;/option&gt;
-  &lt;option value=&quot;*&quot;&gt;*&lt;/option&gt;
-  &lt;option value=&quot;/&quot;&gt;/&lt;/option&gt;
-  &lt;option value=&quot;^&quot;&gt;^&lt;/option&gt;
-  &lt;option value=&quot;sqrt&quot;&gt;&radic; &lt;/option&gt;
-&lt;/select&gt;
+var btnPandaA = document.getElementById("btnPandaA");
+var btnPandaB = document.getElementById("btnPandaB");
+var btnPandaC = document.getElementById("btnPandaC");
+var btnPandaD = document.getElementById("btnPandaD");
 
-  &lt;input id =&quot;num2&quot;/&gt; 
-  
-  &lt;button id=&quot;calculate&quot;&gt;calculate&lt;/button&gt;
-  
-  &lt;div id =&quot;display&quot;&gt;&lt;/div&gt;
+// var links the event listeners to each button located on the html of my quiz
 
-&lt;script src=&quot;calculator.js&quot;&gt;&lt;/script&gt;
 
-&lt;/body&gt;
+
+btnPandaA.addEventListener("click", function(){
+    alert("no");
+})
+
+btnPandaB.addEventListener("click", function(){
+    alert("get good");
+})
+
+btnPandaC.addEventListener("click", function(){
+    alert("right");
+})
+
+btnPandaD.addEventListener("click", function(){
+    alert("read a book");
+})
+
+// event listeners is designed to alert the user through the browser the result of the answer they clicked on 
+
+var btnExtinctA = document.getElementById("btnExtinctA");
+var btnExtinctB = document.getElementById("btnExtinctB");
+var btnExtinctC = document.getElementById("btnExtinctC");
+var btnExtinctD = document.getElementById("btnExtinctD");
+
+// btn Extinct A-D were used because the question had to do with exticnt animals
+
+btnExtinctA.addEventListener("click", function(){
+    alert("no");
+})
+
+btnExtinctB.addEventListener("click", function(){
+    alert("great work");
+})
+
+btnExtinctC.addEventListener("click", function(){
+    alert("good guess but you are wrong");
+})
+
+btnExtinctD.addEventListener("click", function(){
+    alert("try harder");
+})
+
+var btnAmphibA = document.getElementById("btnAmphibA");
+var btnAmphibB = document.getElementById("btnAmphibB");
+var btnAmphibC = document.getElementById("btnAmphibC");
+var btnAmphibD = document.getElementById("btnAmphibD");
+
+
+//btnAmphibA-D  was used because the question dealt with amphibians
+
+
+btnAmphibA.addEventListener("click", function(){
+    alert("sharp cookie");
+})
+
+btnAmphibB.addEventListener("click", function(){
+    alert("wrong");
+})
+
+btnAmphibC.addEventListener("click", function(){
+    alert("try again");
+})
+
+btnAmphibD.addEventListener("click", function(){
+    alert("nice try");
+})
+
+var btnCatA = document.getElementById("btnCatA");
+var btnCatB = document.getElementById("btnCatB");
+var btnCatC = document.getElementById("btnCatC");
+var btnCatD = document.getElementById("btnCatD");
+
+
+
+
+btnCatA.addEventListener("click", function(){
+    alert("thank you for participating");
+})
+
+btnCatB.addEventListener("click", function(){
+    alert("good");
+})
+
+btnCatC.addEventListener("click", function(){
+    alert("disappointing");
+})
+
+btnCatD.addEventListener("click", function(){
+    alert("c'mon now");
+})
+
+var btnGorA = document.getElementById("btnGorA");
+var btnGorB = document.getElementById("btnGorB");
+var btnGorC = document.getElementById("btnGorC");
+var btnGorD = document.getElementById("btnGorD");
+
+
+
+
+
+btnGorA.addEventListener("click", function(){
+    alert("wrong!");
+})
+
+btnGorB.addEventListener("click", function(){
+    alert("you did good, proud of you");
+})
+
+btnGorC.addEventListener("click", function(){
+    alert("try once more");
+})
+
+btnGorD.addEventListener("click", function(){
+    alert("work harder");
+})
             </code>
         </pre>
     </td>
-    <td>The HTML for the Calculator consisted of a selection menu with a total of 6 operators for the user to choose from. The selection menu was used in conjunction with two inputs which the user would choose which numbers to calculate with respect to the particular operator. These options were in one line with the selection menu in between the two inputs to simplify the users' experience. Underneath was a div which would display the answer of each particular operation.</td>
-   
-  </tr>
-</table>
-<table style="width:100%">
- <tr>
- <th>How to make a Homepage</th>
- <th>Explaination</th>
- 
- </tr>
-  <tr>
-    <td>
-        <pre>
-            <code>
-var num1input = document.getElementById("num1");
-var operator = document.getElementById("operator");
-var num2input = document.getElementById("num2");
-var calculate = document.getElementById("calculate");
-var display = document.getElementById("display");
-
-calculate.addEventListener("click", function(){
-  var num1 = num1input.value;
-  var num2 = num2input.value;
- if(operator.value === "+"){
-    var answera = +num1 + +num2;
-    display.innerHTML = answera;
-  }
-  else if(operator.value === "-"){
-    var answerb = num1 - num2; 
-    display.innerHTML = answerb;
-  }
-   else if(operator.value === "*"){
-    var answerc = num1 * num2; 
-    display.innerHTML = answerc;
-  }
-   else if(operator.value === "/"){
-    var answerd = num1 / num2; 
-    display.innerHTML = answerd;
-  }
-  else if(operator.value === "^"){
-    var answere = Math.pow(num1,num2);
-    display.innerHTML = answere;
-  }
-  else if(operator.value === "sqrt"){
-  var answerf = Math.sqrt(num2)
-  display.innerHTML = answerf;
-  }
-});
-            </code>
-        </pre>
-    </td>
-    <td>The javascript performs the calculations while the HTML handles the user interface of my calculator. The first part of my javascript defines the variables based of the id's of my elements from my HTML. I then added an event listener so that when the user "clicks" the calculate button, the function would perform the slew of if and if else calculations which pertain to the particular operator employed by the user.</td>
+    <td>The javascript performs the calculations while the HTML handles the user interface of my quiz. The first part of my javascript defines the variables based of the id's of my elements from my HTML. I then added an event listener so that when the user "clicks" the button for the answer they choose, the function would perform the slew of if and if else calculations which pertain to the particular operator employed by the user. When the user clicks on there answer, the event listener function alerts them through the browser.</td>
    
   </tr>
 </table>
