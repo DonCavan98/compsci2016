@@ -3,7 +3,7 @@ var btnPandaB = document.getElementById("btnPandaB");
 var btnPandaC = document.getElementById("btnPandaC");
 var btnPandaD = document.getElementById("btnPandaD");
 
-
+// var links the event listeners to each button located on the html of my quiz
 
 
 
@@ -23,13 +23,14 @@ btnPandaD.addEventListener("click", function(){
     alert("read a book");
 })
 
+// event listeners is designed to alert the user through the browser the result of the answer they clicked on 
 
 var btnExtinctA = document.getElementById("btnExtinctA");
 var btnExtinctB = document.getElementById("btnExtinctB");
 var btnExtinctC = document.getElementById("btnExtinctC");
 var btnExtinctD = document.getElementById("btnExtinctD");
 
-
+// btn Extinct A-D were used because the question had to do with exticnt animals
 
 btnExtinctA.addEventListener("click", function(){
     alert("no");
@@ -53,7 +54,7 @@ var btnAmphibC = document.getElementById("btnAmphibC");
 var btnAmphibD = document.getElementById("btnAmphibD");
 
 
-
+//btnAmphibA-D  was used because the question dealt with amphibians
 
 
 btnAmphibA.addEventListener("click", function(){
